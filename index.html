@@ -2,21 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Adventure Time!</title>
-    <link href="style.css" rel="stylesheet">
-    <script defer src="game.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Adventure</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class = "container">
-        <div id = "text">Text</div>
-        <div id = "option-buttons" class = "btn-grid">
-            <button class = "btn"> Option1</button>
-            <button class = "btn"> Option2</button>
-            <button class = "btn"> Option3</button>
-            <button class = "btn"> Option4</button>
-            <button class = "btn"> Option5</button>
-            <button class = "btn"> Option6</button>
+    <div class="container">
+        <div id="game-text"></div>
+        <div id="options-container" class = "btn-grid">
+            <button id="option1" class = "btn"></button>
+            <button id="option2" class = "btn"></button>
+        </div>
+        <div id="stats-container">
+        <!-- Player stats, inventory, etc. -->
         </div>
     </div>
+
+<script src="game.js"></script>
+
 </body>
 </html>
