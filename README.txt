@@ -1,2 +1,2 @@
 # JiangGang2025
-Just read
+Just a mini text adventure game.
