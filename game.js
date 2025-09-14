@@ -1,42 +1,24 @@
-const gameTextElement = document.getElementById('game-text');
-const option1Button = document.getElementById('option1');
-const option2Button = document.getElementById('option2');
+var gameTextElement = document.getElementById('text');
+var option1Button = document.getElementById('option1');
+var option2Button = document.getElementById('option2');
 
-let currentState = {
-    location: 'start',
-    inventory: []
-};
+option1Button.style.display = 'none';
+option2Button.style.display = 'none';
 
-const scenes = {
-    start: {
-        text: "Wake up, time to choose.",
-        options: [
-            { text: "Go outside", nextScene: 'outside' },
-            { text: "Stay inside", nextScene: 'inside' }
-        ]
-    },
-    outside: {
-        text: "Look like there is something up ahead.",
-        options: [
-            { text: "Go and see what is up ahead", nextScene: 'ahead' },
-            { text: "Go back inside", nextScene: 'backin' }
-        ]
-    },
-    inside: {
-        text:"filler text.",
-    },
+let gameState = 1;
 
-};
+switch (gameState) {
+    case 1:
+        gameTextElement.innerText = "The morning was supposed to be quiet. " +
+            "Fry the last few eggs in the fridge. Enjoy pickled vegetables with warm congee. " +
+            "One last sip of coffee before heading out to start the day.";
+        console.log(gameTextElement);
 
-function updateGame(sceneName) {
-    const currentScene = scenes[sceneName];
-    gameTextElement.textContent = currentScene.text;
 
-    option1Button.textContent = currentScene.options[0].text;
-    option1Button.onclick = () => updateGame(currentScene.options[0].nextScene);
-
-    option2Button.textContent = currentScene.options[1].text;
-    option2Button.onclick = () => updateGame(currentScene.options[1].nextScene);
+    case 2:
+        gameTextElement.innerText = "Hello";
+        console.log(gameTextElement);
 }
 
-updateGame('start'); // Initialize the game
+
+
