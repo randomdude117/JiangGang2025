@@ -1,9 +1,10 @@
+var startText = document.getElementById('start');
 var gameTextElement = document.getElementById('text');
 var option1Button = document.getElementById('option1');
 var option2Button = document.getElementById('option2');
 
-option1Button.style.display = 'none';
-option2Button.style.display = 'none';
+//option1Button.style.display = 'none';
+//option2Button.style.display = 'none';
 
 function keyPress() {
     return new Promise((resolve) => {
@@ -19,6 +20,13 @@ function keyPress() {
             }
         }
     });
+}
+async function Begin() {
+    startText.innerText = "Start";
+    console.log(startText);
+    await keyPress();
+    startText.innerText = "";
+    Gogogo();
 }
 
 async function Gogogo() {
@@ -58,9 +66,65 @@ async function Gogogo() {
         "Or will you gather your strength to trek back to Goffstown through the unforgiving cold?";
     console.log(gameTextElement);
     await keyPress();
+    gameTextElement.innerText = "make a choice";
+    console.log(gameTextElement);
+    option1Button.innerText = "outside";
+    option2Button.innerText = "inside";
+    console.log(option1Button,option2Button);
 }
 
-Gogogo();
+// function pick(){
+//     let state = "";
+//     option1Button.addEventListener('click', function () {
+//         state = "outside";
+//         gameTextElement.innerText = "outside now";
+//         option1Button.innerText = "outside option 1";
+//         option2Button.innerText = "outside option 2";
+//         console.log(option1Button, option2Button);
+//     });
+//     option2Button.addEventListener('click', function () {
+//         state = "inside";
+//         gameTextElement.innerText = "staying inside";
+//         option1Button.innerText = "inside option 1";
+//         option2Button.innerText = "inside option 2";
+//         console.log(option1Button, option2Button);
+//     });
+//
+//     while (true) {
+//         if (state === "outside"){
+//             gameTextElement.innerText = "Where to go";
+//             console.log(gameTextElement);
+//             option1Button.innerText = "outside option 1";
+//             option2Button.innerText = "outside option 2";
+//             console.log(option1Button, option2Button);
+//             option1Button.addEventListener('click', function () {
+//                 state = "outside";
+//                 gameTextElement.innerText = "outside now";
+//                 option1Button.innerText = "outside option 1";
+//                 option2Button.innerText = "outside option 2";
+//                 console.log(option1Button, option2Button);
+//             });
+//             option2Button.addEventListener('click', function () {
+//                 state = "inside";
+//                 gameTextElement.innerText = "staying inside";
+//                 option1Button.innerText = "inside option 1";
+//                 option2Button.innerText = "inside option 2";
+//                 console.log(option1Button, option2Button);
+//             });
+//         }
+//         else if (state === "inside"){
+//             gameTextElement.innerText = "staying inside";
+//             option1Button.innerText = "inside option 1";
+//             option2Button.innerText = "inside option 2";
+//             console.log(option1Button, option2Button);
+//         }
+//         break;
+//     }
+// }
+
+Begin();
+// Gogogo();
+//pick();
 
 
 
