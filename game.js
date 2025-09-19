@@ -2,9 +2,10 @@ var startText = document.getElementById('start');
 var gameTextElement = document.getElementById('text');
 var option1Button = document.getElementById('option1');
 var option2Button = document.getElementById('option2');
+let bleed = "No";
 
-//option1Button.style.display = 'none';
-//option2Button.style.display = 'none';
+option1Button.style.display = 'none';
+option2Button.style.display = 'none';
 
 function keyPress() {
     return new Promise((resolve) => {
@@ -71,60 +72,79 @@ async function Gogogo() {
     option1Button.innerText = "outside";
     option2Button.innerText = "inside";
     console.log(option1Button,option2Button);
+    option1Button.style.display = 'grid';
+    option2Button.style.display = 'grid';
+    let state = "";
+    option1Button.addEventListener('click', function () {
+        gameTextElement.innerText = "outside now, where to go?";
+        console.log(gameTextElement);
+        option1Button.innerText = "Check out the dealership and see if any of the car start";
+        option2Button.innerText = "Check the train station";
+        console.log(option1Button, option2Button);
+        pick("outside");
+    });
+    option2Button.addEventListener('click', function () {
+        gameTextElement.innerText = "staying inside, where to look?";
+        console.log(gameTextElement);
+        option1Button.innerText = "Look downstair";
+        option2Button.innerText = "Look upstair";
+        console.log(option1Button, option2Button);
+        pick("inside");
+    });
 }
 
-// function pick(){
-//     let state = "";
-//     option1Button.addEventListener('click', function () {
-//         state = "outside";
-//         gameTextElement.innerText = "outside now";
-//         option1Button.innerText = "outside option 1";
-//         option2Button.innerText = "outside option 2";
-//         console.log(option1Button, option2Button);
-//     });
-//     option2Button.addEventListener('click', function () {
-//         state = "inside";
-//         gameTextElement.innerText = "staying inside";
-//         option1Button.innerText = "inside option 1";
-//         option2Button.innerText = "inside option 2";
-//         console.log(option1Button, option2Button);
-//     });
-//
-//     while (true) {
-//         if (state === "outside"){
-//             gameTextElement.innerText = "Where to go";
-//             console.log(gameTextElement);
-//             option1Button.innerText = "outside option 1";
-//             option2Button.innerText = "outside option 2";
-//             console.log(option1Button, option2Button);
-//             option1Button.addEventListener('click', function () {
-//                 state = "outside";
-//                 gameTextElement.innerText = "outside now";
-//                 option1Button.innerText = "outside option 1";
-//                 option2Button.innerText = "outside option 2";
-//                 console.log(option1Button, option2Button);
-//             });
-//             option2Button.addEventListener('click', function () {
-//                 state = "inside";
-//                 gameTextElement.innerText = "staying inside";
-//                 option1Button.innerText = "inside option 1";
-//                 option2Button.innerText = "inside option 2";
-//                 console.log(option1Button, option2Button);
-//             });
-//         }
-//         else if (state === "inside"){
-//             gameTextElement.innerText = "staying inside";
-//             option1Button.innerText = "inside option 1";
-//             option2Button.innerText = "inside option 2";
-//             console.log(option1Button, option2Button);
-//         }
-//         break;
-//     }
-// }
+function pick(state){
+        if (state === "outside"){
+            option1Button.addEventListener('click', function () {
+                pick("dealer");
+            });
+            option2Button.addEventListener('click', function () {
+                pick("station");
+            });
+        }
+        else if (state === "inside"){
+            option1Button.addEventListener('click', function () {
+                state = "downstair";
+                pick();
+            });
+            option2Button.addEventListener('click', function () {
+                state = "upstair";
+                pick();
+            });
+        }
+
+        else if(state === "dealer"){
+            gameTextElement.innerText = "How do you get inside?";
+            console.log(gameTextElement);
+            option1Button.innerText = "Smack open the front door";
+            option2Button.innerText = "Look for the backdoor";
+            console.log(option1Button,option2Button);
+            option1Button.addEventListener('click', function () {
+                pick("frontIn");
+            });
+            option2Button.addEventListener('click', function () {
+                pick("BackIn");
+            });
+        }
+
+        else if(state === "frontIn"){
+            gameTextElement.innerText = "Your leg is bleeding from the shatter glass";
+            console.log(gameTextElement);
+            option1Button.innerText = "Look for bandage";
+            option2Button.innerText = "Look for car key";
+            console.log(option1Button,option2Button);
+            option1Button.addEventListener('click', function () {
+                pick("bandage");
+            });
+            option2Button.addEventListener('click', function () {
+                pick("key");
+            });
+        }
+
+}
 
 Begin();
-// Gogogo();
-//pick();
+
 
 
 
