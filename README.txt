@@ -1,2 +1,2 @@
 # JiangGang2025
-Just a mini text adventure game.
+A text adventure game with a few mini games.
