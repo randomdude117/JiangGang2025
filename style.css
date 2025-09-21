@@ -60,3 +60,21 @@ body{
     font-size: 200px;
 }
 
+td
+{
+    width: 30px;
+    height: 30px;
+    border: solid 2px #888;
+    margin: 0px;
+    padding: 0px;
+    border-radius:5px;
+    background:white;
+}
+
+.grid{
+    margin: 0px auto;
+    background:white;
+}
+
+
+
